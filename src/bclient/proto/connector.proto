@@ -1,0 +1,25 @@
+syntax = "proto3";
+package proto;
+
+option go_package = "./;proto";
+
+message MyTypeRequest {}
+message MyTypeResponse {
+  string name = 1;
+  string version = 2;
+}
+
+message CanPingRequest {}
+message CanPingResponse {
+  bool success = 1;
+}
+message PingRequest {}
+message PingResponse {
+  bool success = 1;
+}
+
+service Connector {
+  rpc MyType(MyTypeRequest) returns (MyTypeResponse) {}
+  rpc CanPing(CanPingRequest) returns (CanPingResponse) {}
+  rpc Ping(PingRequest) returns (PingResponse) {}
+}
